@@ -26,6 +26,7 @@ class Form extends Component {
             value={ cardName }
             onChange={ onInputChange }
             data-testid="name-input"
+            name="cardName"
           />
         </label>
         <label htmlFor="cardDescription">
@@ -36,6 +37,7 @@ class Form extends Component {
             data-testid="description-input"
             value={ cardDescription }
             onChange={ onInputChange }
+            name="cardDescription"
           />
         </label>
         <label htmlFor="cardAttr">
@@ -46,6 +48,7 @@ class Form extends Component {
               value={ cardAttr1 }
               onChange={ onInputChange }
               data-testid="attr1-input"
+              name="cardAttr1"
             />
           </label>
           <label htmlFor="cardAttr2">
@@ -55,6 +58,7 @@ class Form extends Component {
               data-testid="attr2-input"
               value={ cardAttr2 }
               onChange={ onInputChange }
+              name="cardAttr2"
             />
           </label>
           <label htmlFor="cardAttr3">
@@ -64,6 +68,7 @@ class Form extends Component {
               data-testid="attr3-input"
               value={ cardAttr3 }
               onChange={ onInputChange }
+              name="cardAttr3"
             />
           </label>
         </label>
@@ -74,6 +79,7 @@ class Form extends Component {
             data-testid="image-input"
             value={ cardImage }
             onChange={ onInputChange }
+            name="cardImage"
           />
         </label>
         <label htmlFor="cardRare">
@@ -96,6 +102,7 @@ class Form extends Component {
             checked={ cardTrunfo }
             onChange={ onInputChange }
             data-testid="trunfo-input"
+            name="cardTrunfo"
           />
         </label>
         <button
@@ -111,19 +118,38 @@ class Form extends Component {
   }
 }
 
+Form.defaultProps = {
+  cardName: '',
+  cardDescription: '',
+  cardAttr1: '',
+  cardAttr2: '',
+  cardAttr3: '',
+  cardImage: '',
+  cardRare: '',
+  cardTrunfo: false,
+  hasTrunfo: false,
+  isSaveButtonDisabled: false,
+  onInputChange() {
+    return null;
+  },
+  onSaveButtonClick() {
+    return null;
+  },
+};
+
 Form.propTypes = {
-  cardName: PropTypes.string.isRequired,
-  cardDescription: PropTypes.string.isRequired,
-  cardAttr1: PropTypes.string.isRequired,
-  cardAttr2: PropTypes.string.isRequired,
-  cardAttr3: PropTypes.string.isRequired,
-  cardImage: PropTypes.string.isRequired,
-  cardRare: PropTypes.string.isRequired,
-  cardTrunfo: PropTypes.bool.isRequired,
-  hasTrunfo: PropTypes.bool.isRequired,
-  isSaveButtonDisabled: PropTypes.bool.isRequired,
-  onInputChange: PropTypes.func.isRequired,
-  onSaveButtonClick: PropTypes.func.isRequired,
+  cardName: PropTypes.string,
+  cardDescription: PropTypes.string,
+  cardAttr1: PropTypes.string,
+  cardAttr2: PropTypes.string,
+  cardAttr3: PropTypes.string,
+  cardImage: PropTypes.string,
+  cardRare: PropTypes.string,
+  cardTrunfo: PropTypes.bool,
+  hasTrunfo: PropTypes.bool,
+  isSaveButtonDisabled: PropTypes.bool,
+  onInputChange: PropTypes.func,
+  onSaveButtonClick: PropTypes.func,
 };
 
 export default Form;
