@@ -96,14 +96,13 @@ class Form extends Component {
           </select>
         </label>
         <label htmlFor="cardSuperTrunfo">
-          Carta Super Trunfo
-          <input
+          {hasTrunfo === false ? (<input
             type="checkbox"
             checked={ cardTrunfo }
             onChange={ onInputChange }
             data-testid="trunfo-input"
             name="cardTrunfo"
-          />
+          />) : (<div> Você já tem um Super Trunfo em seu baralho </div>)}
         </label>
         <button
           type="submit"

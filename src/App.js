@@ -14,6 +14,7 @@ class App extends React.Component {
     cardTrunfo: false,
     isSaveButtonDisabled: true,
     deck: [],
+    hasTrunfo: false,
   };
 
   realState = (key, value) => {
@@ -117,6 +118,7 @@ class App extends React.Component {
       att1: state1.cardAttr1,
       att2: state1.cardAttr2,
       att3: state1.cardAttr3,
+      trunfo: state1.cardTrunfo,
     };
     const newDeck = state1.deck;
     newDeck.push(card);
@@ -137,10 +139,17 @@ class App extends React.Component {
     }),
   ];
 
+  hasTrunfo = () => {
+    const stateSt = this.state;
+    return stateSt.deck.map((card) => card.trunfo).includes(true);
+  };
+
   onSaveButtonClick = (event) => {
     event.preventDefault();
     this.saveDeck();
     this.clearForm();
+    const trunfo = this.hasTrunfo();
+    this.setState({ hasTrunfo: trunfo });
   };
 
   render() {
@@ -154,6 +163,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       isSaveButtonDisabled,
+      hasTrunfo,
     } = this.state;
     return (
       <div>
@@ -170,6 +180,7 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onSaveButtonClick={ this.onSaveButtonClick }
+          hasTrunfo={ hasTrunfo }
         />
         <Card
           cardName={ cardName }
