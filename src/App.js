@@ -13,6 +13,7 @@ class App extends React.Component {
     cardRare: 'normal',
     cardTrunfo: false,
     isSaveButtonDisabled: true,
+    deck: [],
   };
 
   realState = (key, value) => {
@@ -106,6 +107,42 @@ class App extends React.Component {
     });
   };
 
+  saveDeck = () => {
+    const state1 = this.state;
+    const card = {
+      name: state1.cardName,
+      descripion: state1.cardDescription,
+      image: state1.cardImage,
+      rara: state1.cardRare,
+      att1: state1.cardAttr1,
+      att2: state1.cardAttr2,
+      att3: state1.cardAttr3,
+    };
+    const newDeck = state1.deck;
+    newDeck.push(card);
+    this.setState({
+      deck: newDeck,
+    });
+  };
+
+  clearForm = () => [
+    this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: 'normal',
+    }),
+  ];
+
+  onSaveButtonClick = (event) => {
+    event.preventDefault();
+    this.saveDeck();
+    this.clearForm();
+  };
+
   render() {
     const {
       cardName,
@@ -132,6 +169,7 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
+          onSaveButtonClick={ this.onSaveButtonClick }
         />
         <Card
           cardName={ cardName }
