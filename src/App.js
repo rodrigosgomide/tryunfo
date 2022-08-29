@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import MyDeck from './components/MyDeck';
 
 class App extends React.Component {
   state = {
@@ -192,6 +193,19 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        <section>
+          <h2>Minhas Cartas</h2>
+          <MyDeck
+            cardName="teste"
+            cardDescription="teste"
+            cardAttr1="teste"
+            cardAttr2="teste"
+            cardAttr3="teste"
+            cardImage="teste"
+            cardRare="teste"
+            cardTrunfo="teste"
+          />
+        </section>
       </div>
     );
   }
