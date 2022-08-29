@@ -1,7 +1,6 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
-import MyDeck from './components/MyDeck';
 
 class App extends React.Component {
   state = {
@@ -165,6 +164,7 @@ class App extends React.Component {
       cardTrunfo,
       isSaveButtonDisabled,
       hasTrunfo,
+      deck,
     } = this.state;
     return (
       <div>
@@ -183,6 +183,7 @@ class App extends React.Component {
           onSaveButtonClick={ this.onSaveButtonClick }
           hasTrunfo={ hasTrunfo }
         />
+        <h1>Pré-visualização</h1>
         <Card
           cardName={ cardName }
           cardDescription={ cardDescription }
@@ -193,19 +194,18 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
-        <section>
-          <h2>Minhas Cartas</h2>
-          <MyDeck
-            cardName="teste"
-            cardDescription="teste"
-            cardAttr1="teste"
-            cardAttr2="teste"
-            cardAttr3="teste"
-            cardImage="teste"
-            cardRare="teste"
-            cardTrunfo="teste"
-          />
-        </section>
+        <h2>Minhas Cartas</h2>
+        { deck.length > 0 ? deck.map((card) => (<Card
+          key={ card.name }
+          cardName={ card.name }
+          cardDescription={ card.descripion }
+          cardAttr1={ card.att1 }
+          cardAttr2={ card.att2 }
+          cardAttr3={ card.att3 }
+          cardImage={ card.image }
+          cardRare={ card.rara }
+          cardTrunfo={ card.trunfo }
+        />)) : null }
       </div>
     );
   }
